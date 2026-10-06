@@ -1,26 +1,14 @@
+from func import check_str
+
 class InputData:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, data:str) -> None:
+        self.__data = data
 
     @property
-    def data(self):
+    def data(self) -> str:
         return self.__data
 
     @data.setter
-    def data(self, new_data):
-        match new_data:
-            case None:
-                raise ValueError(
-                    "Запрос не может быть пустым. Пожалуйста, введите данные."
-                )
-            case str():
-                new_data = new_data.strip()
-
-                if not new_data:
-                    raise ValueError(
-                        "Запрос не может быть пустым или состоять только из пробелов."
-                    )
-            case _:
-                raise TypeError("Запрос должен быть строкой.")
-
+    def data(self, new_data:str) -> None:
+        check_str(new_data)
         self.__data = new_data
