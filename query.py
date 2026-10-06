@@ -1,7 +1,7 @@
 from func import check_str
 from requests import get
 
-from const import BASE_URL, SEARCH_PARAMS
+from const import BASE_URL, SEARCH_PARAMS, HEADERS
 
 class QueryUser:
     def __init__(self, query: str):
@@ -16,13 +16,18 @@ class QueryUser:
         check_str(new_str)
         self.__str = new_str.strip()
 
-    def send_query(self) -> dict:
+    def send_query(self) -> str:
         params = {
             **SEARCH_PARAMS,
             "srsearch": self.__str,
         }
 
-        response = get(BASE_URL, params=params, timeout=10)
+        response = get(
+            BASE_URL,
+            params=params,
+            headers=HEADERS,
+            timeout=10,
+        )
         response.raise_for_status()
 
         return response.text
