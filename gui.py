@@ -24,7 +24,7 @@ class WikipediaApp(tk.Tk):
         self.searching = False
         self.query_text = tk.StringVar()
         self.error_text = tk.StringVar()
-        self.status = tk.StringVar(value="Введите запрос, чтобы найти статьи в Википедии.")
+        self.status = tk.StringVar(value="")
         self._configure_styles()
         self._build_widgets()
         self.query_text.trace_add("write", self._clear_error)
@@ -186,11 +186,8 @@ class WikipediaApp(tk.Tk):
                         "", "end", iid=str(index), values=(article["title"], article["pageid"]),
                     )
                 self.status.set(
-                    f"Найдено: {len(articles)}. Нажмите на статью, чтобы открыть её."
-                    if articles else "Ничего не найдено. Попробуйте другой запрос."
+                    f"Найдено: {len(articles)}" if articles else "Ничего не найдено. Попробуйте другой запрос."
                 )
-                if not articles:
-                    self._show_error("Ничего не найдено. Попробуйте другой запрос.")
             self.entry.focus_set()
         self.after(100, self.poll_results)
 
