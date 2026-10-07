@@ -12,3 +12,8 @@ ARTICLE_URL = "https://ru.wikipedia.org/w/index.php?curid="
 HEADERS = {
     "User-Agent": "LETIWikiSearch/1.0 (https://github.com/ECS1PLE/lab-No.-2)",
 }
+
+BACKGROUND = "#20201e"
+FOREGROUND = "#eeeae2"
+MUTED = "#b7b2a8"
+ACCENT = "#d28c70"

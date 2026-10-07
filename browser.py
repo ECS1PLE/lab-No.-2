@@ -8,4 +8,4 @@ class Browser:
         url = f"{ARTICLE_URL}{pageid}"
 
         if not webbrowser.open(url):
-            print(f"Не удалось открыть браузер. Откройте ссылку: {url}")
+            raise RuntimeError(f"Не удалось открыть браузер. Откройте ссылку: {url}")

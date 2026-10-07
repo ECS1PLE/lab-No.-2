@@ -11,7 +11,7 @@ class InputData:
     @data.setter
     def data(self, new_data:str) -> None:
         check_str(new_data)
-        self.__data = new_data
+        self.__data = new_data.strip()
 
     def choose_article(self, articles: list) -> dict | None:
         if not articles:
